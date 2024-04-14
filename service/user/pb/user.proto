@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package user;
+
+// ------------------------------------
+// Rpc Func
+// ------------------------------------
+
+service User {
+
+    //-----------------------用户表-----------------------
+
+    // 用户登录
+    rpc UserLogin(UserLoginReq) returns (UserLoginResp);
+}
+
+// ------------------------------------
+// Messages
+// ------------------------------------
+
+//--------------------------------用户表--------------------------------
+
+message UserLoginReq {
+    string username = 1; // 用户名
+    string password = 2; // 密码
+}
+
+message TokenTag {
+}
+
+message Token {
+    string   token_name             = 1;
+    string   token_value            = 2;
+    bool     is_login               = 3;
+    int64   login_id               = 4;
+    string   login_type             = 5;
+    int64    token_timeout          = 6;
+    int64    session_timeout        = 7;
+    int64    token_session_timeout  = 8;
+    int64    token_activity_timeout = 9;
+    string   login_device           = 10;
+    TokenTag tag                    = 11;
+}
+
+message UserInfo {
+    int64 id       = 1;
+    string username = 2;
+    string password = 3;
+    string nickname = 4;
+    int64  dep_id   = 5;
+    string pos_id   = 6;
+    string dep_name = 7;
+    string pos_name = 8;
+}
+
+message UserLoginResp {
+    Token    token     = 1;
+    UserInfo user_info = 2;
+}

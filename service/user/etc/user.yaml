@@ -1,0 +1,16 @@
+Name: user.rpc
+Mode: dev
+ListenOn: 0.0.0.0:8080
+
+
+
+MysqlDBConf:
+  Type: mysql # mysql or postgres
+  Host: localhost
+  Port: 3306
+  DBName: goview
+  Username: root
+  Password: "123456"
+  MaxOpenConn: 100
+  SSLMode: disable # disable or require
+  CacheTime: 5
