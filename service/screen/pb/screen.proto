@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package screen;
+
+// ------------------------------------
+// Rpc Func
+// ------------------------------------
+
+service Screen {
+
+    //-----------------------大屏信息-----------------------
+
+    // 创建大屏信息
+    rpc InsertScreenProject(AddScreenProjectReq) returns (AddScreenProjectResp);
+
+    // 更新大屏信息
+    rpc UpdateScreenProject(UpdateScreenProjectReq) returns (UpdateScreenProjectResp);
+
+    // 根据大屏信息ID删除
+    rpc DeleteScreenProject(DelScreenProjectReq) returns (DelScreenProjectResp);
+
+    // 根据大屏信息ID获取详情
+    rpc SelectScreenProjectById(SelectScreenProjectByIdReq) returns (SelectScreenProjectByIdResp);
+
+    // 大屏信息列表
+    rpc SelectScreenProjectList(SelectScreenProjectListReq) returns (SelectScreenProjectListResp);
+}
+
+// ------------------------------------
+// Messages
+// ------------------------------------
+
+//--------------------------------大屏信息--------------------------------
+
+message ScreenProject {
+    int64  id        = 1; // ID
+    string name      = 2; // 大屏名称
+    int64  state     = 3; // 发布状态(-1 未发布  1 已发布)
+    int64  user_id   = 4; // 创建用户ID
+    string index_img = 5; // 缩略图
+    string remark    = 6; // 备注
+    bool   is_del    = 7; // 是否删除(0 未删除 1 已删除)
+    int64  create_at = 8; // 创建时间
+}
+
+message ScreenProjectFilter {
+    optional int64  id        = 1; // ID
+    optional string name      = 2; // 大屏名称
+    optional int64  state     = 3; // 发布状态(-1 未发布  1 已发布)
+    optional int64  user_id   = 4; // 创建用户ID
+    optional string index_img = 5; // 缩略图
+    optional string remark    = 6; // 备注
+    optional bool   is_del    = 7; // 是否删除(0 未删除 1 已删除)
+    optional int64  create_at = 8; // 创建时间
+}
+
+message AddScreenProjectReq {
+    string name      = 1; // 大屏名称
+    int64  state     = 2; // 发布状态(-1 未发布  1 已发布)
+    int64  user_id   = 3; // 创建用户ID
+    string index_img = 4; // 缩略图
+    string remark    = 5; // 备注
+    bool   is_del    = 6; // 是否删除(0 未删除 1 已删除)
+}
+
+message AddScreenProjectResp {
+}
+
+message UpdateScreenProjectReq {
+    int64           id        = 1; // ID
+    optional string name      = 2; // 大屏名称
+    optional int64  state     = 3; // 发布状态(-1 未发布  1 已发布)
+    optional int64  user_id   = 4; // 创建用户ID
+    optional string index_img = 5; // 缩略图
+    optional string remark    = 6; // 备注
+    optional bool   is_del    = 7; // 是否删除(0 未删除 1 已删除)
+}
+
+message UpdateScreenProjectResp {
+}
+
+message DelScreenProjectReq {
+    int64 id = 1; // ID
+}
+
+message DelScreenProjectResp {
+}
+
+message SelectScreenProjectByIdReq {
+    int64 id = 1; // ID
+}
+
+message SelectScreenProjectByIdResp {
+    ScreenProject screen_project = 1; // screen_project
+}
+
+message SelectScreenProjectListReq {
+    int64               page      = 1; // 页码
+    int64               page_size = 2; // 每页数量
+    ScreenProjectFilter filter    = 3; // ScreenProjectFilter
+}
+
+message SelectScreenProjectListResp {
+    int64                  count      = 1; // 总数
+    int64                  page_count = 2; // 页码总数
+    repeated ScreenProject results    = 3; // screen_project
+}
