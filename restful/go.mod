@@ -3,6 +3,11 @@ module github.com/ch3nnn/goview-gozero/restful
 go 1.22
 
 require (
+	github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415171029-2532d509e906
+	github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240415171029-2532d509e906
+	github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240415171029-2532d509e906
+	github.com/duke-git/lancet/v2 v2.3.0
+	github.com/golang-module/carbon/v2 v2.3.10
 	github.com/jinzhu/copier v0.4.0
 	github.com/zeromicro/go-zero v1.6.4
 )
@@ -42,12 +47,14 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/openzipkin/zipkin-go v0.4.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.0 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.18.0 // indirect
 	github.com/prometheus/client_model v0.5.0 // indirect
 	github.com/prometheus/common v0.45.0 // indirect
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/redis/go-redis/v9 v9.4.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
+	github.com/zeromicro/x v0.0.0-20240408115609-8224c482b07e // indirect
 	go.etcd.io/etcd/api/v3 v3.5.13 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.13 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.13 // indirect

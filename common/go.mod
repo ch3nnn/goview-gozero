@@ -2,7 +2,7 @@ module github.com/ch3nnn/goview-gozero/common
 
 go 1.22
 
-require github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415160855-3fddf5fb8075
+require github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415171029-2532d509e906
 
 require (
 	github.com/duke-git/lancet/v2 v2.3.0 // indirect

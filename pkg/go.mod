@@ -15,10 +15,12 @@ require (
 	github.com/zeromicro/go-zero v1.6.4
 	github.com/zeromicro/x v0.0.0-20240408115609-8224c482b07e
 	go.opentelemetry.io/otel/trace v1.19.0
+	golang.org/x/exp v0.0.0-20221208152030-732eee02a75a
 	google.golang.org/grpc v1.63.0
 	gorm.io/driver/mysql v1.5.6
 	gorm.io/driver/postgres v1.5.7
 	gorm.io/driver/sqlite v1.5.5
+	gorm.io/gen v0.3.26
 	gorm.io/gorm v1.25.9
 )
 
