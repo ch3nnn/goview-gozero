@@ -53,3 +53,15 @@ func (s *ScreenServer) SelectScreenProjectList(ctx context.Context, in *pb.Selec
 	l := screenlogic.NewSelectScreenProjectListLogic(ctx, s.svcCtx)
 	return l.SelectScreenProjectList(in)
 }
+
+// 创建大屏数据
+func (s *ScreenServer) InsertScreenData(ctx context.Context, in *pb.AddScreenDataReq) (*pb.AddScreenDataResp, error) {
+	l := screenlogic.NewInsertScreenDataLogic(ctx, s.svcCtx)
+	return l.InsertScreenData(in)
+}
+
+// 根据大屏数据ID获取详情
+func (s *ScreenServer) SelectScreenDataById(ctx context.Context, in *pb.SelectScreenDataByIdReq) (*pb.SelectScreenDataByIdResp, error) {
+	l := screenlogic.NewSelectScreenDataByIdLogic(ctx, s.svcCtx)
+	return l.SelectScreenDataById(in)
+}

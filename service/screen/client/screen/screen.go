@@ -14,12 +14,17 @@ import (
 
 // 类型定义
 type (
+	AddScreenDataReq            = pb.AddScreenDataReq
+	AddScreenDataResp           = pb.AddScreenDataResp
 	AddScreenProjectReq         = pb.AddScreenProjectReq
 	AddScreenProjectResp        = pb.AddScreenProjectResp
 	DelScreenProjectReq         = pb.DelScreenProjectReq
 	DelScreenProjectResp        = pb.DelScreenProjectResp
+	ScreenData                  = pb.ScreenData
 	ScreenProject               = pb.ScreenProject
 	ScreenProjectFilter         = pb.ScreenProjectFilter
+	SelectScreenDataByIdReq     = pb.SelectScreenDataByIdReq
+	SelectScreenDataByIdResp    = pb.SelectScreenDataByIdResp
 	SelectScreenProjectByIdReq  = pb.SelectScreenProjectByIdReq
 	SelectScreenProjectByIdResp = pb.SelectScreenProjectByIdResp
 	SelectScreenProjectListReq  = pb.SelectScreenProjectListReq
@@ -38,6 +43,10 @@ type (
 		SelectScreenProjectById(ctx context.Context, in *SelectScreenProjectByIdReq, opts ...grpc.CallOption) (*SelectScreenProjectByIdResp, error)
 		// 大屏信息列表
 		SelectScreenProjectList(ctx context.Context, in *SelectScreenProjectListReq, opts ...grpc.CallOption) (*SelectScreenProjectListResp, error)
+		// 创建大屏数据
+		InsertScreenData(ctx context.Context, in *AddScreenDataReq, opts ...grpc.CallOption) (*AddScreenDataResp, error)
+		// 根据大屏数据ID获取详情
+		SelectScreenDataById(ctx context.Context, in *SelectScreenDataByIdReq, opts ...grpc.CallOption) (*SelectScreenDataByIdResp, error)
 	}
 
 	defaultScreen struct {
@@ -80,4 +89,16 @@ func (m *defaultScreen) SelectScreenProjectById(ctx context.Context, in *SelectS
 func (m *defaultScreen) SelectScreenProjectList(ctx context.Context, in *SelectScreenProjectListReq, opts ...grpc.CallOption) (*SelectScreenProjectListResp, error) {
 	client := pb.NewScreenClient(m.cli.Conn())
 	return client.SelectScreenProjectList(ctx, in, opts...)
+}
+
+// 创建大屏数据
+func (m *defaultScreen) InsertScreenData(ctx context.Context, in *AddScreenDataReq, opts ...grpc.CallOption) (*AddScreenDataResp, error) {
+	client := pb.NewScreenClient(m.cli.Conn())
+	return client.InsertScreenData(ctx, in, opts...)
+}
+
+// 根据大屏数据ID获取详情
+func (m *defaultScreen) SelectScreenDataById(ctx context.Context, in *SelectScreenDataByIdReq, opts ...grpc.CallOption) (*SelectScreenDataByIdResp, error) {
+	client := pb.NewScreenClient(m.cli.Conn())
+	return client.SelectScreenDataById(ctx, in, opts...)
 }

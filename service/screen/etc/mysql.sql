@@ -10,3 +10,14 @@ CREATE TABLE `screen_project`
     `create_at` datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='大屏信息'
+
+
+CREATE TABLE `screen_datum`
+(
+    `id`         int NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `project_id` int      DEFAULT NULL COMMENT 'project ID',
+    `user_id`    int      DEFAULT NULL COMMENT '用户 ID',
+    `content`    text COMMENT '内容数据',
+    `create_at`  datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='大屏数据'

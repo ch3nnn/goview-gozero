@@ -14,4 +14,4 @@ clang-format:
 doc:
 	# Google Protocol Buffers 的文档生成器插件
 	# https://github.com/pseudomuto/protoc-gen-doc
-	@protoc pb/*.proto --doc_out=./pb --doc_opt=../../sa-micro-common/template/protoc-gen-doc/markdown.tmpl,doc.md
+	@protoc pb/*.proto --doc_out=./pb --doc_opt=../../common/template/protoc-gen-doc/markdown.tmpl,doc.md

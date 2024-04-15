@@ -3,8 +3,6 @@ module github.com/ch3nnn/goview-gozero/service/screen
 go 1.22
 
 require (
-	github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240414160150-3ef6eddbcf10
-	github.com/jinzhu/copier v0.4.0
 	github.com/zeromicro/go-zero v1.6.4
 	google.golang.org/grpc v1.63.0
 	google.golang.org/protobuf v1.33.0

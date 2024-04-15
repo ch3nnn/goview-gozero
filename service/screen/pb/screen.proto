@@ -26,6 +26,14 @@ service Screen {
 
     // 大屏信息列表
     rpc SelectScreenProjectList(SelectScreenProjectListReq) returns (SelectScreenProjectListResp);
+
+    //-----------------------大屏数据-----------------------
+
+    // 创建大屏数据
+    rpc InsertScreenData(AddScreenDataReq) returns (AddScreenDataResp);
+
+    // 根据大屏数据ID获取详情
+    rpc SelectScreenDataById(SelectScreenDataByIdReq) returns (SelectScreenDataByIdResp);
 }
 
 // ------------------------------------
@@ -66,6 +74,7 @@ message AddScreenProjectReq {
 }
 
 message AddScreenProjectResp {
+    ScreenProject project = 1; // screen_project
 }
 
 message UpdateScreenProjectReq {
@@ -106,4 +115,36 @@ message SelectScreenProjectListResp {
     int64                  count      = 1; // 总数
     int64                  page_count = 2; // 页码总数
     repeated ScreenProject results    = 3; // screen_project
+}
+
+// ------------------------------------
+// Messages
+// ------------------------------------
+
+//--------------------------------大屏数据--------------------------------
+
+message ScreenData {
+    int64  id         = 1; // ID
+    int64  project_id = 2; // project ID
+    int64  user_id    = 3; // 用户 ID
+    string content    = 4; // 内容数据
+    int64  create_at  = 5; // 创建时间
+}
+
+message AddScreenDataReq {
+    int64  project_id = 1; // project ID
+    int64  user_id    = 2; // 用户 ID
+    string content    = 3; // 内容数据
+}
+
+message AddScreenDataResp {
+}
+
+message SelectScreenDataByIdReq {
+    int64 id         = 1; // ID
+    int64 project_id = 2; // project ID
+}
+
+message SelectScreenDataByIdResp {
+    ScreenData screen_data = 1; // screen_data
 }

@@ -24,6 +24,8 @@ const (
 	Screen_DeleteScreenProject_FullMethodName     = "/screen.Screen/DeleteScreenProject"
 	Screen_SelectScreenProjectById_FullMethodName = "/screen.Screen/SelectScreenProjectById"
 	Screen_SelectScreenProjectList_FullMethodName = "/screen.Screen/SelectScreenProjectList"
+	Screen_InsertScreenData_FullMethodName        = "/screen.Screen/InsertScreenData"
+	Screen_SelectScreenDataById_FullMethodName    = "/screen.Screen/SelectScreenDataById"
 )
 
 // ScreenClient is the client API for Screen service.
@@ -40,6 +42,10 @@ type ScreenClient interface {
 	SelectScreenProjectById(ctx context.Context, in *SelectScreenProjectByIdReq, opts ...grpc.CallOption) (*SelectScreenProjectByIdResp, error)
 	// 大屏信息列表
 	SelectScreenProjectList(ctx context.Context, in *SelectScreenProjectListReq, opts ...grpc.CallOption) (*SelectScreenProjectListResp, error)
+	// 创建大屏数据
+	InsertScreenData(ctx context.Context, in *AddScreenDataReq, opts ...grpc.CallOption) (*AddScreenDataResp, error)
+	// 根据大屏数据ID获取详情
+	SelectScreenDataById(ctx context.Context, in *SelectScreenDataByIdReq, opts ...grpc.CallOption) (*SelectScreenDataByIdResp, error)
 }
 
 type screenClient struct {
@@ -95,6 +101,24 @@ func (c *screenClient) SelectScreenProjectList(ctx context.Context, in *SelectSc
 	return out, nil
 }
 
+func (c *screenClient) InsertScreenData(ctx context.Context, in *AddScreenDataReq, opts ...grpc.CallOption) (*AddScreenDataResp, error) {
+	out := new(AddScreenDataResp)
+	err := c.cc.Invoke(ctx, Screen_InsertScreenData_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *screenClient) SelectScreenDataById(ctx context.Context, in *SelectScreenDataByIdReq, opts ...grpc.CallOption) (*SelectScreenDataByIdResp, error) {
+	out := new(SelectScreenDataByIdResp)
+	err := c.cc.Invoke(ctx, Screen_SelectScreenDataById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ScreenServer is the server API for Screen service.
 // All implementations must embed UnimplementedScreenServer
 // for forward compatibility
@@ -109,6 +133,10 @@ type ScreenServer interface {
 	SelectScreenProjectById(context.Context, *SelectScreenProjectByIdReq) (*SelectScreenProjectByIdResp, error)
 	// 大屏信息列表
 	SelectScreenProjectList(context.Context, *SelectScreenProjectListReq) (*SelectScreenProjectListResp, error)
+	// 创建大屏数据
+	InsertScreenData(context.Context, *AddScreenDataReq) (*AddScreenDataResp, error)
+	// 根据大屏数据ID获取详情
+	SelectScreenDataById(context.Context, *SelectScreenDataByIdReq) (*SelectScreenDataByIdResp, error)
 	mustEmbedUnimplementedScreenServer()
 }
 
@@ -130,6 +158,12 @@ func (UnimplementedScreenServer) SelectScreenProjectById(context.Context, *Selec
 }
 func (UnimplementedScreenServer) SelectScreenProjectList(context.Context, *SelectScreenProjectListReq) (*SelectScreenProjectListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SelectScreenProjectList not implemented")
+}
+func (UnimplementedScreenServer) InsertScreenData(context.Context, *AddScreenDataReq) (*AddScreenDataResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InsertScreenData not implemented")
+}
+func (UnimplementedScreenServer) SelectScreenDataById(context.Context, *SelectScreenDataByIdReq) (*SelectScreenDataByIdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SelectScreenDataById not implemented")
 }
 func (UnimplementedScreenServer) mustEmbedUnimplementedScreenServer() {}
 
@@ -234,6 +268,42 @@ func _Screen_SelectScreenProjectList_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Screen_InsertScreenData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddScreenDataReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScreenServer).InsertScreenData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Screen_InsertScreenData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScreenServer).InsertScreenData(ctx, req.(*AddScreenDataReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Screen_SelectScreenDataById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SelectScreenDataByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScreenServer).SelectScreenDataById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Screen_SelectScreenDataById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScreenServer).SelectScreenDataById(ctx, req.(*SelectScreenDataByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Screen_ServiceDesc is the grpc.ServiceDesc for Screen service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -260,6 +330,14 @@ var Screen_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SelectScreenProjectList",
 			Handler:    _Screen_SelectScreenProjectList_Handler,
+		},
+		{
+			MethodName: "InsertScreenData",
+			Handler:    _Screen_InsertScreenData_Handler,
+		},
+		{
+			MethodName: "SelectScreenDataById",
+			Handler:    _Screen_SelectScreenDataById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

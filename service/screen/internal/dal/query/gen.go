@@ -17,17 +17,20 @@ import (
 
 var (
 	Q             = new(Query)
+	ScreenDatum   *screenDatum
 	ScreenProject *screenProject
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
+	ScreenDatum = &Q.ScreenDatum
 	ScreenProject = &Q.ScreenProject
 }
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:            db,
+		ScreenDatum:   newScreenDatum(db, opts...),
 		ScreenProject: newScreenProject(db, opts...),
 	}
 }
@@ -35,6 +38,7 @@ func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 type Query struct {
 	db *gorm.DB
 
+	ScreenDatum   screenDatum
 	ScreenProject screenProject
 }
 
@@ -43,6 +47,7 @@ func (q *Query) Available() bool { return q.db != nil }
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:            db,
+		ScreenDatum:   q.ScreenDatum.clone(db),
 		ScreenProject: q.ScreenProject.clone(db),
 	}
 }
@@ -58,16 +63,19 @@ func (q *Query) WriteDB() *Query {
 func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:            db,
+		ScreenDatum:   q.ScreenDatum.replaceDB(db),
 		ScreenProject: q.ScreenProject.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
+	ScreenDatum   IScreenDatumDo
 	ScreenProject IScreenProjectDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
+		ScreenDatum:   q.ScreenDatum.WithContext(ctx),
 		ScreenProject: q.ScreenProject.WithContext(ctx),
 	}
 }
