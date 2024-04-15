@@ -1,0 +1,60 @@
+syntax = "v1"
+
+@server(
+	prefix :/api/goview
+	group: sys
+)
+service Restful {
+	@doc(summary : "用户登录")
+	@handler UserLogin
+	post /sys/login (UserLoginRep) returns (UserLoginResp)
+
+	@doc(summary : "获取oss信息")
+	@handler OssInfo
+	get /sys/getOssInfo (OssInfoRep) returns (OssInfoResp)
+}
+
+type (
+	OssInfoRep struct{}
+
+	OssInfoResp {
+		BucketURL string `json:"bucketURL"`
+	}
+)
+
+type UserLoginRep {
+	Username string `json:"username" validate:"required,gte=6,lte=16"` // 用户名
+	Password string `json:"password" validate:"required"`              // 密码
+}
+
+type (
+	UserInfo {
+		Id       string `json:"id"`
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Nickname string `json:"nickname"`
+		DepId    int64  `json:"depId"`
+		PosId    string `json:"posId"`
+		DepName  string `json:"depName"`
+		PosName  string `json:"posName"`
+	}
+
+	Token {
+		TokenName            string            `json:"tokenName"`
+		TokenValue           string            `json:"tokenValue"`
+		IsLogin              bool              `json:"isLogin"`
+		LoginId              string            `json:"loginId"`
+		LoginType            string            `json:"loginType"`
+		TokenTimeout         int               `json:"tokenTimeout"`
+		SessionTimeout       int               `json:"sessionTimeout"`
+		TokenSessionTimeout  int               `json:"tokenSessionTimeout"`
+		TokenActivityTimeout int               `json:"tokenActivityTimeout"`
+		LoginDevice          string            `json:"loginDevice"`
+		Tag                  map[string]string `json:"tag"`
+	}
+
+	UserLoginResp {
+		UserInfo UserInfo `json:"userinfo"`
+		Token    Token    `json:"token"`
+	}
+)

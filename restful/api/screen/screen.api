@@ -1,0 +1,148 @@
+syntax = "v1"
+
+@server(
+	prefix :/api/goview
+	group: screen
+)
+service Restful {
+
+	//-----------------------Project-----------------------
+
+	@doc(summary : "创建大屏信息")
+	@handler InsertScreenProject
+	post /project/create (AddScreenProjectReq) returns (AddScreenProjectResp)
+
+	@doc(summary : "更新大屏信息")
+	@handler UpdateScreenProject
+	post /project/edit (UpdateScreenProjectReq) returns (UpdateScreenProjectResp)
+
+	@doc(summary : "更新大屏信息发布状态")
+	@handler UpdateScreenProjectPublish
+	put /project/publish (UpdateScreenProjectPublishReq) returns (UpdateScreenProjectPublishResp)
+
+	@doc(summary : "根据大屏信息ID删除")
+	@handler DeleteScreenProject
+	delete /project/delete (DelScreenProjectReq) returns (DelScreenProjectResp)
+
+	@doc(summary : "大屏信息列表")
+	@handler SelectScreenProjectList
+	get /project/list (SelectScreenProjectListReq) returns (SelectScreenProjectListResp)
+
+	@doc(summary : "文件上传")
+	@handler UploadScreenProjectFile
+	post /project/upload (UploadScreenProjectFileReq) returns (UploadScreenProjectFileResp)
+
+	//-----------------------Project Data-----------------------
+
+	@doc(summary : "根据大屏信息ID获取大屏数据")
+	@handler ScreenProjectDataByID
+	get /project/getData (ScreenProjectDataByIDReq) returns (ScreenProjectDataByIDResp)
+
+	@doc(summary : "保存大屏数据")
+	@handler InsertScreenProjectData
+	post /project/save/data (InsertScreenProjectDataReq) returns (InsertScreenProjectDataResp)
+}
+
+type (
+	InsertScreenProjectDataReq {
+		ProjectId int64  `form:"projectId"`
+		Content   string `form:"content"`
+	}
+
+	InsertScreenProjectDataResp {
+	}
+)
+
+type (
+	ScreenProjectDataByIDReq {
+		ProjectId int64 `form:"projectId"` // 大屏信息ID
+	}
+
+	ScreenProjectDataByIDResp {
+		Content      string `json:"content"`
+		Id           string `json:"id"`
+		Name         string `json:"projectName"`
+		State        int64  `json:"state"`
+		CreateAt     string `json:"createTime"`
+		CreateUserId int64  `json:"createUserId"`
+		IsDel        int64  `json:"isDelete"`
+		IndexImage   string `json:"indexImage"`
+		Remark       string `json:"remarks"`
+	}
+)
+
+type (
+	ScreenProject {
+		Id       int64  `json:"id"`           //  ID
+		Name     string `json:"projectName"`  //  大屏名称
+		State    int64  `json:"state"`        //  发布状态(-1 未发布  1 已发布)
+		UserId   int64  `json:"createUserId"` //  创建用户ID
+		IndexImg string `json:"indexImage"`   //  缩略图
+		Remark   string `json:"remarks"`      //  备注
+		IsDel    bool   `json:"isDelete"`     //  是否删除(0 未删除 1 已删除)
+		CreateAt string `json:"createTime"`   //  创建时间
+	}
+
+	AddScreenProjectReq {
+		Name     string `json:"projectName"`         //  大屏名称
+		IndexImg string `json:"indexImage,optional"` //  缩略图
+		Remark   string `json:"remarks,optional"`    //  备注
+	}
+
+	AddScreenProjectResp {
+		Id       int64  `json:"id"`           //  ID
+		Name     string `json:"projectName"`  //  大屏名称
+		State    int64  `json:"state"`        //  发布状态(-1 未发布  1 已发布)
+		UserId   int64  `json:"createUserId"` //  创建用户ID
+		IndexImg string `json:"indexImage"`   //  缩略图
+		Remark   string `json:"remarks"`      //  备注
+		IsDel    bool   `json:"isDelete"`     //  是否删除(0 未删除 1 已删除)
+		CreateAt string `json:"createTime"`   //  创建时间
+	}
+
+	UpdateScreenProjectReq {
+		Id       string  `json:"id"`                   //  ID
+		Name     *string `json:"projectName,optional"` //  大屏名称
+		IndexImg *string `json:"indexImage,optional"`  //  缩略图
+		Remark   *string `json:"remarks,optional"`     //  备注
+	}
+
+	UpdateScreenProjectResp {
+	}
+
+	UpdateScreenProjectPublishReq {
+		Id    int64 `json:"id"`    //  ID
+		State int64 `json:"state"` //  发布状态(-1 未发布  1 已发布)
+	}
+
+	UpdateScreenProjectPublishResp {
+	}
+
+	DelScreenProjectReq {
+		Ids int64 `form:"ids"` //  ID
+	}
+
+	DelScreenProjectResp {
+	}
+
+	SelectScreenProjectListReq {
+		Page  int64 `form:"page"`  //  页码
+		Limit int64 `form:"limit"` //  每页数量
+	}
+
+	SelectScreenProjectListResp {
+		Count   int64           `json:"count"`   //  总数
+		Results []ScreenProject `json:"results"` //  screen_project
+	}
+
+	UploadScreenProjectFileReq {
+		Filename string `form:"filename,optional"` // 文件名
+		Object   string `form:"object,optional"`   // 文件
+
+	}
+
+	UploadScreenProjectFileResp {
+		Filename string `json:"fileName"` // 文件名
+
+	}
+)
