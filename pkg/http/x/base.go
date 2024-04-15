@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"net/http"
 
+	"github.com/duke-git/lancet/v2/structs"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/rest/httpx"
 	"github.com/zeromicro/x/errors"
@@ -25,6 +26,8 @@ type BaseResponse[T any] struct {
 	Msg string `json:"msg" xml:"msg" example:"ok"`
 	// Data represents the business data.
 	Data T `json:"data,omitempty" xml:"data,omitempty"`
+
+	Count int64 `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 type baseXmlResponse[T any] struct {
@@ -118,9 +121,25 @@ func handleBaseResponseCtx(ctx context.Context, v any) (int, BaseResponse[any]) 
 		resp.Code = errcode.CodeUnexpected
 		resp.Msg = errcode.MsgUnexpected
 	default:
-		resp.Code = BusinessCodeOK
+		if v != nil {
+			toMap, _ := structs.ToMap(&v)
+
+			count, ok := toMap["count"]
+			if ok {
+				resp.Count = count.(int64)
+			}
+
+			results, ok := toMap["results"]
+			if ok {
+				resp.Data = results
+
+			} else {
+				resp.Data = v
+			}
+		}
+
+		resp.Code = 200
 		resp.Msg = BusinessMsgOK
-		resp.Data = v
 	}
 
 	if resp.Code > BusinessCodeOK {

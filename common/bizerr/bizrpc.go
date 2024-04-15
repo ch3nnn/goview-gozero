@@ -10,3 +10,4 @@ import "github.com/ch3nnn/goview-gozero/pkg/errcode"
 // 例如 "用户服务RPC" 用户或密码错误 UserWrongUserOrPassword = errcode.New(10001, "用户或密码错误")
 
 var UserWrongUserOrPassword = errcode.New(10001, "用户或密码错误")
+var ScreenRpcProjectNotFound = errcode.New(10002, "大屏信息不存在")
