@@ -29,3 +29,9 @@ func (s *UserServer) UserLogin(ctx context.Context, in *pb.UserLoginReq) (*pb.Us
 	l := userlogic.NewUserLoginLogic(ctx, s.svcCtx)
 	return l.UserLogin(in)
 }
+
+// 创建用户表
+func (s *UserServer) InsertSysUser(ctx context.Context, in *pb.AddSysUserReq) (*pb.AddSysUserResp, error) {
+	l := userlogic.NewInsertSysUserLogic(ctx, s.svcCtx)
+	return l.InsertSysUser(in)
+}

@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	User_UserLogin_FullMethodName = "/user.User/UserLogin"
+	User_UserLogin_FullMethodName     = "/user.User/UserLogin"
+	User_InsertSysUser_FullMethodName = "/user.User/InsertSysUser"
 )
 
 // UserClient is the client API for User service.
@@ -28,6 +29,8 @@ const (
 type UserClient interface {
 	// 用户登录
 	UserLogin(ctx context.Context, in *UserLoginReq, opts ...grpc.CallOption) (*UserLoginResp, error)
+	// 创建用户表
+	InsertSysUser(ctx context.Context, in *AddSysUserReq, opts ...grpc.CallOption) (*AddSysUserResp, error)
 }
 
 type userClient struct {
@@ -47,12 +50,23 @@ func (c *userClient) UserLogin(ctx context.Context, in *UserLoginReq, opts ...gr
 	return out, nil
 }
 
+func (c *userClient) InsertSysUser(ctx context.Context, in *AddSysUserReq, opts ...grpc.CallOption) (*AddSysUserResp, error) {
+	out := new(AddSysUserResp)
+	err := c.cc.Invoke(ctx, User_InsertSysUser_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility
 type UserServer interface {
 	// 用户登录
 	UserLogin(context.Context, *UserLoginReq) (*UserLoginResp, error)
+	// 创建用户表
+	InsertSysUser(context.Context, *AddSysUserReq) (*AddSysUserResp, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -62,6 +76,9 @@ type UnimplementedUserServer struct {
 
 func (UnimplementedUserServer) UserLogin(context.Context, *UserLoginReq) (*UserLoginResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserLogin not implemented")
+}
+func (UnimplementedUserServer) InsertSysUser(context.Context, *AddSysUserReq) (*AddSysUserResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InsertSysUser not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
@@ -94,6 +111,24 @@ func _User_UserLogin_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_InsertSysUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddSysUserReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).InsertSysUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_InsertSysUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).InsertSysUser(ctx, req.(*AddSysUserReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -104,6 +139,10 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UserLogin",
 			Handler:    _User_UserLogin_Handler,
+		},
+		{
+			MethodName: "InsertSysUser",
+			Handler:    _User_InsertSysUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
