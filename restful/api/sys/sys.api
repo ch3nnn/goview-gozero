@@ -9,10 +9,19 @@ service Restful {
 	@handler UserLogin
 	post /sys/login (UserLoginRep) returns (UserLoginResp)
 
+	@doc(summary : "用户登出")
+	@handler UserLogout
+	get /sys/logout (UserLogoutRep) returns (UserLogoutResp)
+
 	@doc(summary : "获取oss信息")
 	@handler OssInfo
 	get /sys/getOssInfo (OssInfoRep) returns (OssInfoResp)
 }
+
+type (
+	UserLogoutRep  struct{}
+	UserLogoutResp struct{}
+)
 
 type (
 	OssInfoRep struct{}

@@ -21,6 +21,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: sys.UserLoginHandler(serverCtx),
 			},
 			{
+				// 用户登出
+				Method:  http.MethodGet,
+				Path:    "/sys/logout",
+				Handler: sys.UserLogoutHandler(serverCtx),
+			},
+			{
 				// 获取oss信息
 				Method:  http.MethodGet,
 				Path:    "/sys/getOssInfo",
