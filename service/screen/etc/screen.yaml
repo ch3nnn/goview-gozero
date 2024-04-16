@@ -1,6 +1,6 @@
 Name: screen.rpc
 Mode: dev
-ListenOn: 0.0.0.0:8090
+ListenOn: 0.0.0.0:8899
 
 
 MysqlDBConf:

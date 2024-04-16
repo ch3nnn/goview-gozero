@@ -6,7 +6,7 @@ ListenOn: 0.0.0.0:8888
 
 MysqlDBConf:
   Type: mysql # mysql or postgres
-  Host: localhost
+  Host: goview-gozero-db
   Port: 3306
   DBName: goview
   Username: root

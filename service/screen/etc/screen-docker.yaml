@@ -1,12 +1,11 @@
-Name: user.rpc
+Name: screen.rpc
 Mode: dev
-ListenOn: 0.0.0.0:8888
-
+ListenOn: 0.0.0.0:8090
 
 
 MysqlDBConf:
   Type: mysql # mysql or postgres
-  Host: localhost
+  Host: goview-gozero-db
   Port: 3306
   DBName: goview
   Username: root
