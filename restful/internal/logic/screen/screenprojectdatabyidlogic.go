@@ -62,6 +62,10 @@ func (l *ScreenProjectDataByIDLogic) ScreenProjectDataByID(req *types.ScreenProj
 		return nil, batchError.Err()
 	}
 
+	if datumRpc.GetScreenData() == nil {
+		return nil, nil
+	}
+
 	return &types.ScreenProjectDataByIDResp{
 		Id:           strconv.FormatInt(projectRpc.GetScreenProject().GetId(), 10),
 		Name:         projectRpc.GetScreenProject().GetName(),
