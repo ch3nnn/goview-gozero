@@ -1,4 +1,4 @@
-.PHONY: rpc clang-format doc
+.PHONY: rpc clang-format doc fmt
 
 
 rpc:
@@ -15,3 +15,8 @@ doc:
 	# Google Protocol Buffers 的文档生成器插件
 	# https://github.com/pseudomuto/protoc-gen-doc
 	@protoc pb/*.proto --doc_out=./pb --doc_opt=../../common/template/protoc-gen-doc/markdown.tmpl,doc.md
+
+
+fmt:
+	@find . -name '*.go' -not -path "./vendor/*" -not -name "*.pb.go" -not -name "*.gen.go" | xargs gofumpt -w -extra
+	@find . -name '*.go' -not -path "./vendor/*" -not -name "*.pb.go" -not -name "*.gen.go" | xargs -n 1 -t goimports-reviser -rm-unused -set-alias -company-prefixes "github.com/ch3nnn/goview-gozero" -project-name "github.com/ch3nnn/goview-gozero/service/screen"

@@ -3,12 +3,12 @@ package userlogic
 import (
 	"context"
 
-	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/model"
-	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/query"
-	"github.com/ch3nnn/goview-gozero/service/user/internal/utils"
 	"github.com/zeromicro/go-zero/core/logx"
 
+	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/model"
+	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/query"
 	"github.com/ch3nnn/goview-gozero/service/user/internal/svc"
+	"github.com/ch3nnn/goview-gozero/service/user/internal/utils"
 	"github.com/ch3nnn/goview-gozero/service/user/pb"
 )
 

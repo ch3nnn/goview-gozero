@@ -6,6 +6,25 @@ syntax = "v1"
 )
 service Restful {
 
+	//-----------------------Project Data-----------------------
+
+	@doc(summary : "根据大屏信息ID获取大屏数据")
+	@handler ScreenProjectDataByID
+	get /project/getData (ScreenProjectDataByIDReq) returns (ScreenProjectDataByIDResp)
+
+	@doc(summary : "保存大屏数据")
+	@handler InsertScreenProjectData
+	post /project/save/data (InsertScreenProjectDataReq) returns (InsertScreenProjectDataResp)
+
+}
+
+@server(
+	prefix :/api/goview
+	group: screen
+	jwt: Auth
+)
+service Restful {
+
 	//-----------------------Project-----------------------
 
 	@doc(summary : "创建大屏信息")
@@ -32,15 +51,6 @@ service Restful {
 	@handler UploadScreenProjectFile
 	post /project/upload (UploadScreenProjectFileReq) returns (UploadScreenProjectFileResp)
 
-	//-----------------------Project Data-----------------------
-
-	@doc(summary : "根据大屏信息ID获取大屏数据")
-	@handler ScreenProjectDataByID
-	get /project/getData (ScreenProjectDataByIDReq) returns (ScreenProjectDataByIDResp)
-
-	@doc(summary : "保存大屏数据")
-	@handler InsertScreenProjectData
-	post /project/save/data (InsertScreenProjectDataReq) returns (InsertScreenProjectDataResp)
 }
 
 type (

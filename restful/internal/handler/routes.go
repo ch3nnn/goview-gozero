@@ -39,6 +39,24 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
+				// 根据大屏信息ID获取大屏数据
+				Method:  http.MethodGet,
+				Path:    "/project/getData",
+				Handler: screen.ScreenProjectDataByIDHandler(serverCtx),
+			},
+			{
+				// 保存大屏数据
+				Method:  http.MethodPost,
+				Path:    "/project/save/data",
+				Handler: screen.InsertScreenProjectDataHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/api/goview"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
 				// 创建大屏信息
 				Method:  http.MethodPost,
 				Path:    "/project/create",
@@ -74,19 +92,8 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/project/upload",
 				Handler: screen.UploadScreenProjectFileHandler(serverCtx),
 			},
-			{
-				// 根据大屏信息ID获取大屏数据
-				Method:  http.MethodGet,
-				Path:    "/project/getData",
-				Handler: screen.ScreenProjectDataByIDHandler(serverCtx),
-			},
-			{
-				// 保存大屏数据
-				Method:  http.MethodPost,
-				Path:    "/project/save/data",
-				Handler: screen.InsertScreenProjectDataHandler(serverCtx),
-			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/api/goview"),
 	)
 }

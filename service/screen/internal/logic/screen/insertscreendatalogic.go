@@ -3,10 +3,10 @@ package screenlogic
 import (
 	"context"
 
-	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/model"
-	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/zeromicro/go-zero/core/logx"
 
+	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/model"
+	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/ch3nnn/goview-gozero/service/screen/internal/svc"
 	"github.com/ch3nnn/goview-gozero/service/screen/pb"
 )

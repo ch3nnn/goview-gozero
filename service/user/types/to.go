@@ -1,9 +1,10 @@
 package types
 
 import (
+	carbon "github.com/golang-module/carbon/v2"
+
 	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/model"
 	"github.com/ch3nnn/goview-gozero/service/user/pb"
-	"github.com/golang-module/carbon/v2"
 )
 
 func ToJWT(userId int64, jwt string) *pb.Token {

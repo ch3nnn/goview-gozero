@@ -4,12 +4,13 @@ import (
 	"context"
 	"strconv"
 
-	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
-	"github.com/ch3nnn/goview-gozero/service/screen/pb"
-	"github.com/golang-module/carbon/v2"
+	carbon "github.com/golang-module/carbon/v2"
 	"github.com/zeromicro/go-zero/core/errorx"
 	"github.com/zeromicro/go-zero/core/fx"
 	"github.com/zeromicro/go-zero/core/logx"
+
+	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
+	"github.com/ch3nnn/goview-gozero/service/screen/pb"
 
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"
@@ -45,13 +46,17 @@ func (l *ScreenProjectDataByIDLogic) ScreenProjectDataByID(req *types.ScreenProj
 
 	fx.Parallel(
 		func() {
-			datumRpc, err = l.svcCtx.ScreenRpc.SelectScreenDataById(l.ctx, &screenClient.SelectScreenDataByIdReq{ProjectId: req.ProjectId})
+			datumRpc, err = l.svcCtx.ScreenRpc.SelectScreenDataById(l.ctx, &screenClient.SelectScreenDataByIdReq{
+				ProjectId: req.ProjectId,
+			})
 			if err != nil {
 				batchError.Add(err)
 			}
 		},
 		func() {
-			projectRpc, err = l.svcCtx.ScreenRpc.SelectScreenProjectById(l.ctx, &screenClient.SelectScreenProjectByIdReq{Id: req.ProjectId})
+			projectRpc, err = l.svcCtx.ScreenRpc.SelectScreenProjectById(l.ctx, &screenClient.SelectScreenProjectByIdReq{
+				Id: req.ProjectId,
+			})
 			if err != nil {
 				batchError.Add(err)
 			}
@@ -73,8 +78,8 @@ func (l *ScreenProjectDataByIDLogic) ScreenProjectDataByID(req *types.ScreenProj
 		Content:      datumRpc.GetScreenData().GetContent(),
 		IndexImage:   projectRpc.GetScreenProject().GetIndexImg(),
 		Remark:       projectRpc.GetScreenProject().GetRemark(),
-		IsDel:        1,
 		CreateUserId: projectRpc.GetScreenProject().GetUserId(),
 		CreateAt:     carbon.CreateFromTimestamp(datumRpc.GetScreenData().GetCreateAt()).ToString(),
+		IsDel:        map[bool]int64{true: 1, false: -1}[projectRpc.GetScreenProject().GetIsDel()],
 	}, nil
 }

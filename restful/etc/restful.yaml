@@ -2,6 +2,11 @@ Name: Restful
 Host: 0.0.0.0
 Port: 8888
 
+Auth:
+  AccessSecret: AccessSecret
+  AccessExpire: 86400
+
+
 MaxBytes: 5368709120
 
 UserRpc:

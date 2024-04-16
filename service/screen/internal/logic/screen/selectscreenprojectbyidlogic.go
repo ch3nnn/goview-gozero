@@ -4,11 +4,12 @@ import (
 	"context"
 	"errors"
 
-	"github.com/ch3nnn/goview-gozero/common/bizerr"
-	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/zeromicro/go-zero/core/logx"
 	"gorm.io/gorm"
 
+	"github.com/ch3nnn/goview-gozero/common/bizerr"
+
+	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/ch3nnn/goview-gozero/service/screen/internal/svc"
 	"github.com/ch3nnn/goview-gozero/service/screen/pb"
 )

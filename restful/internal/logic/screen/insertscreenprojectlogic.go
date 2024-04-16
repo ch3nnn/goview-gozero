@@ -2,10 +2,12 @@ package screen
 
 import (
 	"context"
+	"encoding/json"
+
+	carbon "github.com/golang-module/carbon/v2"
+	"github.com/zeromicro/go-zero/core/logx"
 
 	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
-	"github.com/golang-module/carbon/v2"
-	"github.com/zeromicro/go-zero/core/logx"
 
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"
@@ -32,10 +34,10 @@ func NewInsertScreenProjectLogic(ctx context.Context, svcCtx *svc.ServiceContext
 
 // InsertScreenProject 创建大屏信息
 func (l *InsertScreenProjectLogic) InsertScreenProject(req *types.AddScreenProjectReq) (resp *types.AddScreenProjectResp, err error) {
+	userId, _ := l.ctx.Value("id").(json.Number).Int64()
 	rpcResp, err := l.svcCtx.ScreenRpc.InsertScreenProject(l.ctx, &screenClient.AddScreenProjectReq{
 		Name:     req.Name,
-		State:    1,
-		UserId:   0,
+		UserId:   userId,
 		IndexImg: req.IndexImg,
 		Remark:   req.Remark,
 	})

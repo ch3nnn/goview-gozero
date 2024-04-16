@@ -3,10 +3,10 @@ package svc
 import (
 	"github.com/zeromicro/go-zero/zrpc"
 
-	"github.com/ch3nnn/goview-gozero/restful/internal/config"
-
 	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
 	userClient "github.com/ch3nnn/goview-gozero/service/user/client/user"
+
+	"github.com/ch3nnn/goview-gozero/restful/internal/config"
 )
 
 type ServiceContext struct {

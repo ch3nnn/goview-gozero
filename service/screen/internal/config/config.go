@@ -1,8 +1,9 @@
 package config
 
 import (
-	"github.com/ch3nnn/goview-gozero/pkg/config"
 	"github.com/zeromicro/go-zero/zrpc"
+
+	"github.com/ch3nnn/goview-gozero/pkg/config"
 )
 
 // Config 全局相关配置

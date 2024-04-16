@@ -3,15 +3,17 @@ package userlogic
 import (
 	"context"
 
+	"github.com/pkg/errors"
+	"github.com/zeromicro/go-zero/core/logx"
+	"gorm.io/gorm"
+
 	"github.com/ch3nnn/goview-gozero/common/bizerr"
+
 	"github.com/ch3nnn/goview-gozero/service/user/internal/dal/query"
 	"github.com/ch3nnn/goview-gozero/service/user/internal/svc"
 	"github.com/ch3nnn/goview-gozero/service/user/internal/utils"
 	"github.com/ch3nnn/goview-gozero/service/user/pb"
 	"github.com/ch3nnn/goview-gozero/service/user/types"
-	"github.com/pkg/errors"
-	"github.com/zeromicro/go-zero/core/logx"
-	"gorm.io/gorm"
 )
 
 // UserLoginLogic 业务逻辑上下文
@@ -48,7 +50,7 @@ func (l *UserLoginLogic) UserLogin(in *pb.UserLoginReq) (*pb.UserLoginResp, erro
 		return nil, err
 	}
 
-	jwt, err := utils.GenJWT("secret", 3600*24,
+	jwt, err := utils.GenJWT("AccessSecret", 3600*24,
 		utils.WithJWTOption("id", sysUser.ID),
 		utils.WithJWTOption("username", sysUser.Username),
 	)

@@ -40,6 +40,11 @@
         ],
         "tags": [
           "restful/screen"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -67,6 +72,11 @@
         ],
         "tags": [
           "restful/screen"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -94,6 +104,11 @@
         ],
         "tags": [
           "restful/screen"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -156,6 +171,11 @@
         ],
         "tags": [
           "restful/screen"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -183,6 +203,11 @@
         ],
         "tags": [
           "restful/screen"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -256,6 +281,11 @@
         "consumes": [
           "multipart/form-data",
           "application/x-www-form-urlencoded"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
         ]
       }
     },
@@ -298,6 +328,23 @@
             }
           }
         ],
+        "tags": [
+          "restful/sys"
+        ]
+      }
+    },
+    "/api/goview/sys/logout": {
+      "get": {
+        "summary": "用户登出",
+        "operationId": "UserLogout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserLogoutResp"
+            }
+          }
+        },
         "tags": [
           "restful/sys"
         ]
@@ -807,6 +854,16 @@
         "userinfo",
         "token"
       ]
+    },
+    "UserLogoutRep": {
+      "type": "object",
+      "properties": {},
+      "title": "UserLogoutRep"
+    },
+    "UserLogoutResp": {
+      "type": "object",
+      "properties": {},
+      "title": "UserLogoutResp"
     }
   },
   "securityDefinitions": {

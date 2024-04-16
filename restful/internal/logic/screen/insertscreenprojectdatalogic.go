@@ -3,8 +3,9 @@ package screen
 import (
 	"context"
 
-	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
 	"github.com/zeromicro/go-zero/core/logx"
+
+	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
 
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"

@@ -3,10 +3,10 @@ package screenlogic
 import (
 	"context"
 
-	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/model"
-	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/zeromicro/go-zero/core/logx"
 
+	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/model"
+	"github.com/ch3nnn/goview-gozero/service/screen/internal/dal/query"
 	"github.com/ch3nnn/goview-gozero/service/screen/internal/svc"
 	"github.com/ch3nnn/goview-gozero/service/screen/pb"
 )
@@ -54,5 +54,6 @@ func (l *InsertScreenProjectLogic) InsertScreenProject(in *pb.AddScreenProjectRe
 			Remark:   sp.IndexImg,
 			IsDel:    false,
 			CreateAt: sp.CreateAt.Unix(),
-		}}, nil
+		},
+	}, nil
 }

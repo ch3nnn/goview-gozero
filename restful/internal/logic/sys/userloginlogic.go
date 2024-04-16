@@ -3,9 +3,10 @@ package sys
 import (
 	"context"
 
-	userClient "github.com/ch3nnn/goview-gozero/service/user/client/user"
 	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
+
+	userClient "github.com/ch3nnn/goview-gozero/service/user/client/user"
 
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"

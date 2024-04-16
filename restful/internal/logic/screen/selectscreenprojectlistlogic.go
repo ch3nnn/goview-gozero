@@ -3,9 +3,10 @@ package screen
 import (
 	"context"
 
-	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
-	"github.com/golang-module/carbon/v2"
+	carbon "github.com/golang-module/carbon/v2"
 	"github.com/zeromicro/go-zero/core/logx"
+
+	screenClient "github.com/ch3nnn/goview-gozero/service/screen/client/screen"
 
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"
@@ -40,9 +41,9 @@ func (l *SelectScreenProjectListLogic) SelectScreenProjectList(req *types.Select
 		return nil, err
 	}
 
-	data := make([]types.ScreenProject, len(rpcResp.GetResults()))
+	projects := make([]types.ScreenProject, len(rpcResp.GetResults()))
 	for i, project := range rpcResp.GetResults() {
-		data[i] = types.ScreenProject{
+		projects[i] = types.ScreenProject{
 			Id:       project.GetId(),
 			Name:     project.GetName(),
 			State:    project.GetState(),
@@ -56,6 +57,6 @@ func (l *SelectScreenProjectListLogic) SelectScreenProjectList(req *types.Select
 
 	return &types.SelectScreenProjectListResp{
 		Count:   rpcResp.GetCount(),
-		Results: data,
+		Results: projects,
 	}, nil
 }

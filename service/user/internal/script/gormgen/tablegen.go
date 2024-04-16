@@ -3,10 +3,11 @@ package main
 import (
 	"strings"
 
-	"github.com/ch3nnn/goview-gozero/pkg/config"
 	"gorm.io/gen"
 	"gorm.io/gen/field"
 	"gorm.io/gorm"
+
+	"github.com/ch3nnn/goview-gozero/pkg/config"
 )
 
 // SqlDsn TODO 数据库连接地址

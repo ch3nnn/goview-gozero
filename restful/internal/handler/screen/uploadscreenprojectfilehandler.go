@@ -6,11 +6,13 @@ import (
 	"os"
 	"path"
 
+	"github.com/zeromicro/go-zero/core/utils"
+
 	xhttp "github.com/ch3nnn/goview-gozero/pkg/http/x"
+
 	"github.com/ch3nnn/goview-gozero/restful/internal/logic/screen"
 	"github.com/ch3nnn/goview-gozero/restful/internal/svc"
 	"github.com/ch3nnn/goview-gozero/restful/internal/types"
-	"github.com/zeromicro/go-zero/core/utils"
 )
 
 // UploadScreenProjectFileHandler 文件上传

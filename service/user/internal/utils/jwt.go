@@ -3,7 +3,7 @@ package utils
 import (
 	"time"
 
-	"github.com/golang-jwt/jwt/v4"
+	jwt "github.com/golang-jwt/jwt/v4"
 )
 
 // JWTOption describes the jwt extra data
