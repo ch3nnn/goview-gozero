@@ -2,8 +2,6 @@ Name: user.rpc
 Mode: dev
 ListenOn: 0.0.0.0:8888
 
-
-
 MysqlDBConf:
   Type: mysql # mysql or postgres
   Host: goview-gozero-db
