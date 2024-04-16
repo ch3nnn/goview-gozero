@@ -30,5 +30,5 @@ func NewOssInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *OssInfoLo
 
 // OssInfo 获取oss信息
 func (l *OssInfoLogic) OssInfo(_ *types.OssInfoRep) (resp *types.OssInfoResp, err error) {
-	return &types.OssInfoResp{BucketURL: "http://localhost:8888/static/"}, nil
+	return &types.OssInfoResp{BucketURL: "/static/upload/"}, nil
 }

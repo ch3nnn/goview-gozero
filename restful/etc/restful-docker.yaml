@@ -10,9 +10,9 @@ Auth:
 MaxBytes: 5368709120
 
 UserRpc:
-  Target: "dns:///127.0.0.1:8888"
+  Target: "dns:///goview-gozero-user-rpc:8888"
   NonBlock: true
 
 ScreenRpc:
-  Target: "dns:///127.0.0.1:8899"
+  Target: "dns:///goview-gozero-screen-rpc:8899"
   NonBlock: true

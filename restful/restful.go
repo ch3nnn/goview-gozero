@@ -21,15 +21,15 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(c.RestConf, rest.WithCors())
 	defer server.Stop()
 
 	// static file
 	// https://github.com/zeromicro/zero-examples/blob/main/http/static/main.go#L22
 	server.AddRoute(rest.Route{
 		Method:  http.MethodGet,
-		Path:    "/static/:file",
-		Handler: http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))).ServeHTTP,
+		Path:    "/static/upload/:file",
+		Handler: http.StripPrefix("/static/upload/", http.FileServer(http.Dir("./static"))).ServeHTTP,
 	})
 
 	ctx := svc.NewServiceContext(c)
