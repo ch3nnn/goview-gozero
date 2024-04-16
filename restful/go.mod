@@ -4,8 +4,8 @@ go 1.22
 
 require (
 	github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415171029-2532d509e906
-	github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240415171029-2532d509e906
-	github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240415171029-2532d509e906
+	github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240416062626-3360dd4688ea
+	github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240416062626-3360dd4688ea
 	github.com/duke-git/lancet/v2 v2.3.0
 	github.com/golang-module/carbon/v2 v2.3.10
 	github.com/jinzhu/copier v0.4.0

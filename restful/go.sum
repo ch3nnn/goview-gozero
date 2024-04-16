@@ -16,10 +16,10 @@ github.com/cespare/xxhash/v2 v2.2.0 h1:DC2CZ1Ep5Y4k3ZQ899DldepgrayRUGE6BBZ/cd9Cj
 github.com/cespare/xxhash/v2 v2.2.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415171029-2532d509e906 h1:FlBlKPIDxhEKxZMfS7z0KK3g8ZxyWhIvOZzOdLpSnqk=
 github.com/ch3nnn/goview-gozero/pkg v0.0.0-20240415171029-2532d509e906/go.mod h1:t1d0pfF09COLyUyjLUpn99ZV1f/Px/bm+OizjZ6N2ZM=
-github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240415171029-2532d509e906 h1:ZJ+UONvDMC89OryYAa9dQMEKhZCd61EZoX2KKAFO+ik=
-github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240415171029-2532d509e906/go.mod h1:Od3QjSBFIqUBZg6bOY4TF9NXr+wNDuGYPMU+APO1u7Y=
-github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240415171029-2532d509e906 h1:PChwEdCqWzNyc89Q91YGCK+7IGt0iME9llL0t2J1e+I=
-github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240415171029-2532d509e906/go.mod h1:Rff8BKTYjNsIqx2FERV2uO97+TcUBPAognOlIHuNYW4=
+github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240416062626-3360dd4688ea h1:eO6nkgd/UOVi5RS29pbm8yCMyPPq5zSuHbXVy+ZpvkM=
+github.com/ch3nnn/goview-gozero/service/screen v0.0.0-20240416062626-3360dd4688ea/go.mod h1:Wc1WrrILn04ITg9UCMGVz3cyqXSrWK43CIM1fQyTzpk=
+github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240416062626-3360dd4688ea h1:H8Si3CHoGXITjwubw5RcZTlWQLJQGit0VeFt9XtfPfo=
+github.com/ch3nnn/goview-gozero/service/user v0.0.0-20240416062626-3360dd4688ea/go.mod h1:63qnDFSKoSMf6ESQ48ysjGix58j3TPzOZ3IJSGfvtAw=
 github.com/coreos/go-semver v0.3.1 h1:yi21YpKnrx1gt5R+la8n5WgS0kCrsPp33dmEyHReZr4=
 github.com/coreos/go-semver v0.3.1/go.mod h1:irMmmIw/7yzSRPWryHsK7EYSg09caPQL03VsM8rvUec=
 github.com/coreos/go-systemd/v22 v22.5.0 h1:RrqgGjYQKalulkV8NGVIfkXQf6YYmOyiJKk8iXXhfZs=
@@ -207,8 +207,8 @@ golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACk
 golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
 golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5ydBHafDWAxML/pGHZbMvKqRZ5+Abc=
-golang.org/x/exp v0.0.0-20240409090435-93d18d7e34b8 h1:ESSUROHIBHg7USnszlcdmjBEwdMj9VUvU+OPk4yl2mc=
-golang.org/x/exp v0.0.0-20240409090435-93d18d7e34b8/go.mod h1:/lliqkxwWAhPjf5oSOIJup2XcqJaw8RGS6k3TGEc7GI=
+golang.org/x/exp v0.0.0-20221208152030-732eee02a75a h1:4iLhBPcpqFmylhnkbY3W0ONLUYYkDAW9xMFLfxgsvCw=
+golang.org/x/exp v0.0.0-20221208152030-732eee02a75a/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=
 golang.org/x/mod v0.2.0/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
 golang.org/x/mod v0.3.0/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
 golang.org/x/mod v0.4.2/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
@@ -260,8 +260,8 @@ golang.org/x/tools v0.0.0-20200619180055-7c47624df98f/go.mod h1:EkVYQZoAsY45+roY
 golang.org/x/tools v0.0.0-20210106214847-113979e3529a/go.mod h1:emZCQorbCU4vsT4fOWvOPXz4eW1wZW4PmDk9uLelYpA=
 golang.org/x/tools v0.1.1/go.mod h1:o0xws9oXOQQZyjljx8fwUC0k7L1pTE6eaCbjGeHmOkk=
 golang.org/x/tools v0.1.12/go.mod h1:hNGJHUnrk76NpqgfD5Aqm5Crs+Hm0VOH/i9J2+nxYbc=
-golang.org/x/tools v0.20.0 h1:hz/CVckiOxybQvFw6h7b/q80NTr9IUQb4s1IIzW7KNY=
-golang.org/x/tools v0.20.0/go.mod h1:WvitBU7JJf6A4jOdg4S1tviW9bhUxkgeCui/0JHctQg=
+golang.org/x/tools v0.17.0 h1:FvmRgNOcs3kOa+T20R1uhfP9F6HgG2mfxDv1vrx1Htc=
+golang.org/x/tools v0.17.0/go.mod h1:xsh6VxdV005rRVaS6SSAf9oiAqljS7UZUacMZ8Bnsps=
 golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
