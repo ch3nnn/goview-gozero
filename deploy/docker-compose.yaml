@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+
+  web-nginx:
+    image: ch3nnn/goview:v2.2.8
+    container_name: goview-gozero-web
+    restart: always
+    ports:
+      - "80:80"
+    privileged: true # 这个必须要，解决nginx的文件调用的权限问题
+    networks:
+      - goview-gozero
+    depends_on:
+      db:
+        condition: service_healthy
+
+  restful-api:
+    container_name: goview-gozero-restful-api
+    build:
+      context: ../restful/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - goview-gozero
+    depends_on:
+      db:
+        condition: service_healthy
+
+  user-rpc:
+    container_name: goview-gozero-user-rpc
+    build:
+      context: ../service/user
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - goview-gozero
+    depends_on:
+      db:
+        condition: service_healthy
+
+  screen-rpc:
+    container_name: goview-gozero-screen-rpc
+    build:
+      context: ../service/screen
+      dockerfile: Dockerfile
+    ports:
+      - "8899:8899"
+    networks:
+      - goview-gozero
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    container_name: goview-gozero-db
+    image: mysql:8.2.0
+    restart: always
+    environment:
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: goview
+      LANG: C.UTF-8
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - goview-gozero
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+
+
+networks:
+  goview-gozero:
+    driver: bridge

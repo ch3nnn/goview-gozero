@@ -39,3 +39,28 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
 |--------|------|----------|
 | User   | 8888 | 用户服务 RPC |
 | Screen | 8899 | 大屏服务 RPC |
+
+
+## 三、快速开始
+
+### Docker运行服务
+> 包含 前端 Nginx、 Restful API 服务、RPC 服务、数据库等
+
+1. 进入 `deploy` 目录
+    ```bash
+    cd deploy
+    ```
+2. 执行 `docker-compose up -d`
+    ```bash
+    docker-compose up -d
+    ```
+    ```bash
+    [+] Running 5/6
+    ⠋ Network deploy_goview-gozero Created 31.0s
+    ✔ Container goview-gozero-db Healthy 30.7s
+    ✔ Container goview-gozero-restful-api Started 30.9s
+    ✔ Container goview-gozero-screen-rpc Started 30.9s
+    ✔ Container goview-gozero-web Started 30.9s
+    ✔ Container goview-gozero-user-rpc Started
+    ```
+3. docker container 正常运行后, 在浏览器中打开链接地址：http://127.0.0.1
