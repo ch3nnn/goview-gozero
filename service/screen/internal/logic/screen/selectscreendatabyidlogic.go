@@ -47,7 +47,7 @@ func (l *SelectScreenDataByIdLogic) SelectScreenDataById(in *pb.SelectScreenData
 	return &pb.SelectScreenDataByIdResp{ScreenData: &pb.ScreenData{
 		Id:        screenDatum.ID,
 		ProjectId: screenDatum.ProjectID,
-		UserId:    0,
+		UserId:    screenDatum.UserID,
 		Content:   screenDatum.Content,
 		CreateAt:  screenDatum.CreateAt.Unix(),
 	}}, nil
