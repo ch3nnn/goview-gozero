@@ -13,7 +13,7 @@ GoView Go backend service. Based on the [gozero](https://github.com/zeromicro/go
 
 - Documentation: https://www.mtruning.club/
 - Demo: https://demo.mtruning.club/
-- Frontend code v2.2.8: https://gitee.com/dromara/go-view/commits/v2.2.8
+- Frontend code v2.2.8: [https://gitee.com/dromara/go-view/commits/v2.2.8](https://gitee.com/dromara/go-view/tree/v2.2.8)
 
 ## 2. Service Information
 
