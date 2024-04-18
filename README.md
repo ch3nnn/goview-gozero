@@ -1,5 +1,7 @@
 # goview-gozero
 
+[English](README_EN.md) | 简体中文
+
 ## 一、介绍
 
 GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) 框架, 实现后端接口。
