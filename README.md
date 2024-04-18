@@ -15,7 +15,7 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
 
 - 文档地址: https://www.mtruning.club/
 - 演示地址: https://demo.mtruning.club/
-- 前端代码 v2.2.8: https://gitee.com/dromara/go-view/commits/v2.2.8
+- 前端代码 v2.2.8: [https://gitee.com/dromara/go-view/commits/v2.2.8](https://gitee.com/dromara/go-view/tree/v2.2.8)
 
 ## 二、各服务信息
 
