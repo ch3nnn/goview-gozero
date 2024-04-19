@@ -55,12 +55,12 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
     docker-compose up -d
     ```
     ```bash
-    [+] Running 5/6
-    ⠋ Network deploy_goview-gozero Created 31.0s
-    ✔ Container goview-gozero-db Healthy 30.7s
-    ✔ Container goview-gozero-restful-api Started 30.9s
-    ✔ Container goview-gozero-screen-rpc Started 30.9s
-    ✔ Container goview-gozero-web Started 30.9s
-    ✔ Container goview-gozero-user-rpc Started
-    ```
+   [+] Running 5/6
+   ⠋ Network deploy_goview-gozero        Created 92.1s
+   ✔ Container goview-gozero-db          Healthy 30.7s
+   ✔ Container goview-gozero-screen-rpc  Healthy 61.3s
+   ✔ Container goview-gozero-user-rpc    Healthy 61.3s
+   ✔ Container goview-gozero-restful-api Healthy 91.9s
+   ✔ Container goview-gozero-web         Started 92.0s
+   ```
 3. docker container 正常运行后, 在浏览器中打开链接地址：http://127.0.0.1
