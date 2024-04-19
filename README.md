@@ -1,5 +1,7 @@
 # goview-gozero
 
+[English](README_EN.md) | 简体中文
+
 ## 一、介绍
 
 GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) 框架, 实现后端接口。
@@ -13,7 +15,7 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
 
 - 文档地址: https://www.mtruning.club/
 - 演示地址: https://demo.mtruning.club/
-- 前端代码 v2.2.8: https://gitee.com/dromara/go-view/commits/v2.2.8
+- 前端代码 v2.2.8: [https://gitee.com/dromara/go-view/commits/v2.2.8](https://gitee.com/dromara/go-view/tree/v2.2.8)
 
 ## 二、各服务信息
 
@@ -46,11 +48,11 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
 ### Docker运行服务
 > 包含 前端 Nginx、 Restful API 服务、RPC 服务、数据库等
 
-1. 进入 `deploy` 目录
+1. 进入 deploy 目录
     ```bash
     cd deploy
     ```
-2. 执行 `docker-compose up -d`
+2. 执行 docker-compose up -d
     ```bash
     docker-compose up -d
     ```
