@@ -12,7 +12,7 @@ services:
     networks:
       - goview-gozero
     depends_on:
-      db:
+      restful-api:
         condition: service_healthy
 
   restful-api:
@@ -24,7 +24,16 @@ services:
       - "8080:8080"
     networks:
       - goview-gozero
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8080" ]
+      interval: 30s
+      timeout: 2s
+      retries: 3
     depends_on:
+      user-rpc:
+        condition: service_healthy
+      screen-rpc:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -37,6 +46,11 @@ services:
       - "8888:8888"
     networks:
       - goview-gozero
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8888" ]
+      interval: 30s
+      timeout: 2s
+      retries: 3
     depends_on:
       db:
         condition: service_healthy
@@ -50,6 +64,11 @@ services:
       - "8899:8899"
     networks:
       - goview-gozero
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8899" ]
+      interval: 30s
+      timeout: 2s
+      retries: 3
     depends_on:
       db:
         condition: service_healthy
@@ -72,8 +91,10 @@ services:
     networks:
       - goview-gozero
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "--password=123456" ]
+      interval: 30s
+      timeout: 2s
+      retries: 3
 
 networks:
   goview-gozero:
