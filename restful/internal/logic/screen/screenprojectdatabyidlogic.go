@@ -5,7 +5,6 @@ import (
 	"strconv"
 
 	carbon "github.com/golang-module/carbon/v2"
-	"github.com/zeromicro/go-zero/core/errorx"
 	"github.com/zeromicro/go-zero/core/fx"
 	"github.com/zeromicro/go-zero/core/logx"
 
@@ -39,32 +38,28 @@ func NewScreenProjectDataByIDLogic(ctx context.Context, svcCtx *svc.ServiceConte
 func (l *ScreenProjectDataByIDLogic) ScreenProjectDataByID(req *types.ScreenProjectDataByIDReq) (*types.ScreenProjectDataByIDResp, error) {
 	var (
 		err        error
-		batchError errorx.BatchError
 		datumRpc   *pb.SelectScreenDataByIdResp
 		projectRpc *pb.SelectScreenProjectByIdResp
 	)
 
-	fx.Parallel(
-		func() {
+	err = fx.ParallelErr(
+		func() error {
 			datumRpc, err = l.svcCtx.ScreenRpc.SelectScreenDataById(l.ctx, &screenClient.SelectScreenDataByIdReq{
 				ProjectId: req.ProjectId,
 			})
-			if err != nil {
-				batchError.Add(err)
-			}
+
+			return err
 		},
-		func() {
+		func() error {
 			projectRpc, err = l.svcCtx.ScreenRpc.SelectScreenProjectById(l.ctx, &screenClient.SelectScreenProjectByIdReq{
 				Id: req.ProjectId,
 			})
-			if err != nil {
-				batchError.Add(err)
-			}
+
+			return err
 		},
 	)
-
-	if batchError.NotNil() {
-		return nil, batchError.Err()
+	if err != nil {
+		return nil, err
 	}
 
 	if datumRpc.GetScreenData() == nil {

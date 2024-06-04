@@ -9,7 +9,7 @@ require (
 	github.com/duke-git/lancet/v2 v2.3.0
 	github.com/golang-module/carbon/v2 v2.3.10
 	github.com/jinzhu/copier v0.4.0
-	github.com/zeromicro/go-zero v1.6.4
+	github.com/zeromicro/go-zero v1.6.5
 )
 
 require (
