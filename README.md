@@ -66,3 +66,7 @@ GoView Go 后台服务。基于 [gozero](https://github.com/zeromicro/go-zero) �
    ✔ Container goview-gozero-web         Started 92.0s
    ```
 3. docker container 正常运行后, 在浏览器中打开链接地址：http://127.0.0.1
+
+## 四、微服务相关示例代码
+- [分布式任务调度: xxl-job 与 go-zero 框架集成](https://github.com/ch3nnn/xxl-job-zero)
+- [分布式事务: dtm 与 go-zero 框架集成](https://github.com/ch3nnn/dtm-zero)
